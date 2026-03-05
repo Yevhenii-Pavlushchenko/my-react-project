@@ -3,6 +3,7 @@
 import Book from '../Book/Book';
 import Mailbox from '../MailBox/MailBox';
 import Product from '../Product/Product';
+import  './App.css'
 
 export default function App() {
   return (
@@ -13,11 +14,12 @@ export default function App() {
         name="Fries and Burger"
         imgUrl="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?w=640"
         price={125} />
-     <h1>Best selling(MailBox)</h1>
+     <h1 className='title'>Best selling(MailBox)</h1>
       {/* <Mailbox username='Ivan' messages={["1", "2"]} /> */}
-      <Mailbox username='Ivan' messages={[]} />
-      <h1>Best selling(Books)</h1>
-      <Book/>
+      <Mailbox username='Ivan' messages={["11","Galya","1","3"]} />
+      <h1 style={{color:"red"}}>Best selling(Books)</h1>
+      <Book />
+
     </>
   );
 }

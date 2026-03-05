@@ -1,3 +1,5 @@
+import css from './Book.module.css'
+
 interface Book{
     id: string;
     name: string
@@ -13,9 +15,10 @@ export default function Book() {
     <>
       <ul>
         {books.map((book) => (
-          <li key={book.id}>{book.name}</li>
+          <li className={css.bookitem} key={book.id}>{book.name}</li>
         ))}
-      </ul>
+        </ul>
+        
     </>
   );
     

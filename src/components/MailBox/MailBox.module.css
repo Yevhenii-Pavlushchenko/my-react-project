@@ -1,0 +1,32 @@
+.textTitle{
+    font-size: 20px;
+}
+.textTitleAccent{
+    font-weight: 900;
+    color: peru;
+}
+.messageText{
+
+}
+.messageTextAccent{
+    font-size: 20px;
+    font-weight: 700;
+    color: peru;
+}
+
+.checkText{
+
+}
+
+.btnOpen{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    width: 130px;
+    border-radius: 16px;
+
+}
+
+.noMessageText{
+
+}

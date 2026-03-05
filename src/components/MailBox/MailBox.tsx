@@ -1,3 +1,6 @@
+import css from './MailBox.module.css'
+// import clsx from "clsx";
+
 interface MailboxProps {
   username: string;
   messages: string[];
@@ -17,15 +20,19 @@ interface MailboxProps {
 export default function Mailbox({ username, messages }: MailboxProps) {
   return (
     <>
-      <p>Hello {username}</p>
+      <p className={css.textTitle}>Hello 
+         <span className={css.textTitleAccent}> {username}</span>
+      </p>
       {messages.length > 0 ? (
         <>
-          <p>You have {messages.length} unread messages</p>
-          <p>Check your inbox to read them!</p>
-          <button>Open inbox</button>
+          <p className={css.messageText}>You have 
+            <span className={css.messageTextAccent}> {messages.length} </span>
+            unread messages</p>
+          <p className={css.checkText}>Check your inbox to read them!</p>
+          <button className={css.btnOpen}>Open inbox</button>
         </>
       ) : (
-        <p>No unread messages</p>
+        <p className={css.noMessageText}>No unread messages</p>
       )}
     </>
   );

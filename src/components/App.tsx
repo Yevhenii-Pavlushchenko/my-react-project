@@ -1,29 +1,18 @@
-// src/App.tsx
+// src/components/App.tsx
 
-
-const CoockeyUrl = "../public/cookey.jpg"
-const CoockeyWidth = "150"
-const CoockeyHeight = "200"
-
-function Product() {
-  return (
-    <div>
-      <img src="" alt="" />
-      <h2>Cookies</h2>
-      <p>Price: 999 credits</p>
-      <img src={CoockeyUrl} alt="coockey" width={CoockeyWidth} height={CoockeyHeight} />
-    </div>
-  );
-}
+import Product from './Product';
 
 export default function App() {
   return (
     <>
-      <h1>Products</h1>
-
-      <Product />
-      <Product />
-      <Product />
+      <h1>Best selling</h1>
+      <Product name="Tacos With Lime" imgUrl="/cookey.jpg" price={120} />
+      <Product
+        name="Fries and Burger"
+        imgUrl="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?w=640"
+        price={125} />
     </>
   );
 }
+
+

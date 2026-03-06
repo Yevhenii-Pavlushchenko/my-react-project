@@ -24,6 +24,9 @@
     padding: 10px;
     width: 130px;
     border-radius: 16px;
+    background-color: peru;
+    border: none;
+    font-weight: 600;
 
 }
 

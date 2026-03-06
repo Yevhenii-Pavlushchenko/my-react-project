@@ -3,6 +3,7 @@
 import Book from '../Book/Book';
 import Mailbox from '../MailBox/MailBox';
 import Product from '../Product/Product';
+import Alert from '../Alert/Alert'
 import  './App.css'
 
 export default function App() {
@@ -19,6 +20,13 @@ export default function App() {
       <Mailbox username='Ivan' messages={["11","Galya","1","3"]} />
       <h1 style={{color:"red"}}>Best selling(Books)</h1>
       <Book />
+      <h1>Alert</h1>
+        <>
+      <Alert />
+      <Alert type="success"  />
+      <Alert type="error" />
+    </>
+      
 
     </>
   );

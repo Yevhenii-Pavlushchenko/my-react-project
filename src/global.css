@@ -1,0 +1,12 @@
+/* src/global.css */
+
+body {
+    font-family: sans-serif;
+    line-height: 1.5;
+    background-color: bisque;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}

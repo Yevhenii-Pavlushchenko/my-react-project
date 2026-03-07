@@ -18,10 +18,18 @@ interface MailboxProps {
 // }
 
 export default function Mailbox({ username, messages }: MailboxProps) {
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    console.log("Clicked",event);
+    console.log("Target:",event.target);
+    
+    
+  }
   return (
     <>
       <p className={css.textTitle}>Hello 
-         <span className={css.textTitleAccent}> {username}</span>
+        <span className={css.textTitleAccent}> {username} </span>
+         !
       </p>
       {messages.length > 0 ? (
         <>
@@ -29,7 +37,11 @@ export default function Mailbox({ username, messages }: MailboxProps) {
             <span className={css.messageTextAccent}> {messages.length} </span>
             unread messages</p>
           <p className={css.checkText}>Check your inbox to read them!</p>
-          <button className={css.btnOpen}>Open inbox</button>
+          <button
+              className={css.btnOpen}
+              onClick={handleClick}>
+            Open inbox
+          </button>
         </>
       ) : (
         <p className={css.noMessageText}>No unread messages</p>

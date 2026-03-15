@@ -11,11 +11,21 @@ import ClickCounter from '../ClickCounter/ClickCounter'
 import StateClickCounter from '../StateClickCounter/StateClickCounter'
 import OrderForm from "../OrderForm/OrderForm";
 import axios from "axios";
+import SearchForm from "../SearchForm/SearchForm";
+import {type Article} from '../../types/Article'
+import ArticleList from "../ArticleList/ArticleList";
+
+
+interface ArticlesHttpResponce{
+  hits:Article[]
+}
 
 export default function App() {
   
   const [clicks, setClicks] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [articles, setArticles] = useState<Article[]>([])
+  const [isLoading, setIsLoading] = useState(false)
   
   const handleClick = () => {
     setClicks(clicks + 1);
@@ -35,7 +45,21 @@ export default function App() {
       .get('https://swapi.info/api/people/1')
       .then((response) => setPerson(response.data));
   }, []);
-   console.log('App rendred!');
+  console.log('App rendred!');
+  
+  const handleSearch = async (topic: string) => {
+   
+    setIsLoading(true)
+
+    const response =
+      await axios.get<ArticlesHttpResponce>(`https://hn.algolia.com/api/v1/search?query=${topic}`)
+      
+    setArticles(response.data.hits)
+    setIsLoading(false)
+    console.log(response.data);
+  }
+
+
 
   return (
     <>
@@ -76,11 +100,21 @@ export default function App() {
               {isOpen && <p className="toggleNextMessage">🎉 Surprise! MotherFucker .</p>}
         </div>
       </div>
+
       <h1>StateClickCounter</h1>
       <StateClickCounter />
+
        <h1>Place your order</h1>
       <OrderForm onSubmit={handleOrder} />
       <pre>{JSON.stringify(person, null, 2)}</pre>
+
+
+      <h1>SEarch Form</h1>
+      <div>
+        <SearchForm onSubmit={handleSearch} />
+        {isLoading && <p>Loading data, please wait...</p>}
+      {articles.length > 0 && <ArticleList items={articles}/>}
+      </div>
       
     </>
   );

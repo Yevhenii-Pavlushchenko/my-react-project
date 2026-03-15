@@ -1,5 +1,5 @@
 // src/components/App.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Book from '../Book/Book';
 import Mailbox from '../MailBox/MailBox';
 import Product from '../Product/Product';
@@ -9,6 +9,8 @@ import Button from '../Button/Button';
 import UserMenu from '../UserMenu/UserMenu';
 import ClickCounter from '../ClickCounter/ClickCounter'
 import StateClickCounter from '../StateClickCounter/StateClickCounter'
+import OrderForm from "../OrderForm/OrderForm";
+import axios from "axios";
 
 export default function App() {
   
@@ -22,6 +24,18 @@ export default function App() {
   const toggleMessage = () => {
     setIsOpen(!isOpen)
   }
+  const handleOrder = (data: string) => {
+    console.log("Order received from:", data);
+  }
+  const [person, setPerson] = useState(null);
+   
+  useEffect(() => {
+	  console.log('Effect ran!');
+    axios
+      .get('https://swapi.info/api/people/1')
+      .then((response) => setPerson(response.data));
+  }, []);
+   console.log('App rendred!');
 
   return (
     <>
@@ -63,7 +77,11 @@ export default function App() {
         </div>
       </div>
       <h1>StateClickCounter</h1>
-      <StateClickCounter/>
+      <StateClickCounter />
+       <h1>Place your order</h1>
+      <OrderForm onSubmit={handleOrder} />
+      <pre>{JSON.stringify(person, null, 2)}</pre>
+      
     </>
   );
 }
